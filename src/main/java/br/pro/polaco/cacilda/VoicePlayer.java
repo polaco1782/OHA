@@ -7,6 +7,7 @@ package br.pro.polaco.cacilda;
 
 import java.io.InputStream;
 import java.util.Map;
+import main.java.goxr3plus.javastreamplayer.stream.Status;
 import main.java.goxr3plus.javastreamplayer.stream.StreamPlayer;
 import main.java.goxr3plus.javastreamplayer.stream.StreamPlayerEvent;
 import main.java.goxr3plus.javastreamplayer.stream.StreamPlayerException;
@@ -18,6 +19,8 @@ import main.java.goxr3plus.javastreamplayer.stream.StreamPlayerListener;
  */
 public class VoicePlayer extends StreamPlayer implements StreamPlayerListener
 {
+    public boolean running = false;
+
     public VoicePlayer()
     {
         addStreamPlayerListener(this);
@@ -38,7 +41,13 @@ public class VoicePlayer extends StreamPlayer implements StreamPlayerListener
     @Override
     public void statusUpdated(StreamPlayerEvent spe)
     {
-        System.out.println("Status do player: " + spe.getPlayerStatus());
+        if(spe.getPlayerStatus() == Status.STOPPED)
+        {
+            System.out.println("Reproducao finalizada!");
+            running = false;
+        }
+        else
+            running = true;
 
       //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

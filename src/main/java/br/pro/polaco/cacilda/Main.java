@@ -6,12 +6,12 @@
 package br.pro.polaco.cacilda;
 
 import java.io.File;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
 import com.darkprograms.speech.recognizer.Recognizer;
 import com.darkprograms.speech.synthesiser.SynthesiserV2;
 import com.darkprograms.speech.microphone.MicrophoneAnalyzer;
 import com.darkprograms.speech.recognizer.GoogleResponse;
-import java.io.BufferedInputStream;
-import java.io.InputStream;
 import net.sourceforge.javaflacencoder.FLACFileWriter;
 
 
@@ -27,7 +27,14 @@ public class Main
     public static void main(String[] args)
     {
         MicrophoneAnalyzer mic = new MicrophoneAnalyzer(FLACFileWriter.FLAC);
+        SynthesiserV2 v2 = new SynthesiserV2("AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw");
+        Recognizer rec = new Recognizer(Recognizer.Languages.PORTUGUESE_BRASIL, "AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw");
+        VoicePlayer v = new VoicePlayer();
+
         mic.setAudioFile(new File("/tmp/captura.flac"));
+        v2.setLanguage("pt-br");
+        v2.setPitch(1.0);
+        v2.setSpeed(1.0);
 
         while (true)
         {
@@ -40,7 +47,7 @@ public class Main
 
             System.out.printf("Volume: %d\n", volume);
 
-            if(isSpeaking)
+            if(isSpeaking && !v.running)
             {
                 try
                 {
@@ -51,18 +58,11 @@ public class Main
                         Thread.sleep(1000);
                     } while (mic.getAudioVolume() > THRESHOLD);
 
-                    //Recognizer rec = new Recognizer(Recognizer.Languages.PORTUGUESE_BRASIL, "AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw");
                     //GoogleResponse response = rec.getRecognizedDataForFlac(mic.getAudioFile(), 3);
                     //displayResponse(response);
 
-                    SynthesiserV2 v2 = new SynthesiserV2("AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw");
-                    v2.setLanguage("pt-br");
-                    v2.setPitch(1.0);
-                    v2.setSpeed(1.0);
-
                     InputStream in = new BufferedInputStream(v2.getMP3Data("Olá, eu sou a assistente Cacilda!"));
 
-                    VoicePlayer v = new VoicePlayer();
                     v.play_stream(in);
                 } 
                 catch (Exception e)
