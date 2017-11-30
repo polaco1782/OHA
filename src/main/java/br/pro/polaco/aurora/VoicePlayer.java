@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.pro.polaco.cacilda;
+package br.pro.polaco.aurora;
 
-import java.io.InputStream;
-import java.util.Map;
 import main.java.goxr3plus.javastreamplayer.stream.Status;
 import main.java.goxr3plus.javastreamplayer.stream.StreamPlayer;
 import main.java.goxr3plus.javastreamplayer.stream.StreamPlayerEvent;
 import main.java.goxr3plus.javastreamplayer.stream.StreamPlayerException;
 import main.java.goxr3plus.javastreamplayer.stream.StreamPlayerListener;
+import java.io.InputStream;
+import java.util.Map;
 
 /**
  *

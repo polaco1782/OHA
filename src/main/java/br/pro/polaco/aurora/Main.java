@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.pro.polaco.cacilda;
+package br.pro.polaco.aurora;
 
-import java.io.File;
-import java.io.BufferedInputStream;
-import java.io.InputStream;
 import com.darkprograms.speech.recognizer.Recognizer;
 import com.darkprograms.speech.synthesiser.SynthesiserV2;
 import com.darkprograms.speech.microphone.MicrophoneAnalyzer;
 import com.darkprograms.speech.recognizer.GoogleResponse;
 import net.sourceforge.javaflacencoder.FLACFileWriter;
-
+import java.io.File;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
 
 /**
  *
@@ -61,7 +60,7 @@ public class Main
                     //GoogleResponse response = rec.getRecognizedDataForFlac(mic.getAudioFile(), 3);
                     //displayResponse(response);
 
-                    InputStream in = new BufferedInputStream(v2.getMP3Data("Olá, eu sou a assistente Cacilda!"));
+                    InputStream in = new BufferedInputStream(v2.getMP3Data("Olá, eu sou a assistente Aurora!"));
 
                     v.play_stream(in);
                 } 
