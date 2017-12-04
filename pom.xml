@@ -42,6 +42,11 @@
             <artifactId>java-stream-player</artifactId>
             <version>V1.1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.7</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
