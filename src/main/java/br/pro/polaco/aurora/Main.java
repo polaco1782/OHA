@@ -31,9 +31,11 @@ public class Main
         Recognizer rec = new Recognizer(Recognizer.Languages.PORTUGUESE_BRASIL, API_LIC);
         SynthesiserV2 v2 = new SynthesiserV2(API_LIC);
         VoicePlayer v = new VoicePlayer();
-        GPIO g = new GPIO();
+        Http ht = new Http();
+        //GPIO g = new GPIO();
 
-        g.provision_pins();
+        //g.provision_pins();
+        ht.StartHttp();
         mic.setAudioFile(new File("/tmp/captura.flac"));
         v2.setLanguage("pt-br");
         v2.setPitch(1.0);
